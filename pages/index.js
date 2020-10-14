@@ -3,6 +3,11 @@ import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 
+// getStaticProps can only be exported from a page. You can’t export it from non-page files.
+
+// In development (npm run dev or yarn dev), getStaticProps runs on every request.
+// In production, getStaticProps runs at build time.
+// Because it’s meant to be run at build time, you won’t be able to use data that’s only available during request time, such as query parameters or HTTP headers.
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
@@ -12,6 +17,7 @@ export async function getStaticProps() {
     }
   }
 }
+// Note! To use Server-side Rendering, you need to export getServerSideProps instead of getStaticProps from your page.
 
 export default function Home({ allPostsData }) {
   return (
