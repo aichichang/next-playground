@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
 
+// Use `getStaticProps` to fetch a specific post given an ID 
+// and `getStaticPaths` to fetch all possible blog posts
 export async function getStaticPaths() {
   const paths = getAllPostIds()
   return {
